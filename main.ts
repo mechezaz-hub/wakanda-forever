@@ -31,6 +31,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function on_
 })
 let NAMOR : Sprite = null
 let shuri : Sprite = null
+info.setScore(0)
 info.setLife(7000)
 scene.setBackgroundImage(assets.image`
     wakanda

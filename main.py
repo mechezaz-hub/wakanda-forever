@@ -41,6 +41,7 @@ scene.on_overlap_tile(SpriteKind.player,
 
 NAMOR: Sprite = None
 shuri: Sprite = None
+info.set_score(0)
 info.set_life(7000)
 scene.set_background_image(assets.image("""
     wakanda
