@@ -1,9 +1,16 @@
+def on_overlap_tile(sprite3, location2):
+    game.game_over(True)
+scene.on_overlap_tile(SpriteKind.player,
+    assets.tile("""
+        baseTransparency16
+        """),
+    on_overlap_tile)
+
 def on_on_score():
     NAMOR.set_position(70, 47)
     NAMOR.say_text("OWIE! YOU KILLED ME! OK, OK, I GIVE UP! YOU ALL WIN!",
         5000,
         True)
-    NAMOR.destroy(effects.cool_radial, 1000)
     scene.set_background_image(assets.image("""
         boston-bridge
         """))
@@ -15,16 +22,6 @@ def on_on_overlap(sprite, otherSprite):
     NAMOR.set_position(148, 2)
 sprites.on_overlap(SpriteKind.guard, SpriteKind.enemy, on_on_overlap)
 
-def on_overlap_tile(sprite2, location):
-    game.game_over(False)
-scene.on_overlap_tile(SpriteKind.player,
-    sprites.dungeon.hazard_lava1,
-    on_overlap_tile)
-
-def on_overlap_tile2(sprite3, location2):
-    game.game_over(True)
-scene.on_overlap_tile(SpriteKind.player, sprites.jewels.jewel5, on_overlap_tile2)
-
 def on_on_overlap2(sprite4, otherSprite2):
     scene.camera_shake(20, 5000)
     shuri.say_text("OW! You Pierced Me!", 2000, True)
@@ -35,6 +32,12 @@ def on_on_overlap2(sprite4, otherSprite2):
         info.change_life_by(5)
         pause(100)
 sprites.on_overlap(SpriteKind.player, SpriteKind.enemy, on_on_overlap2)
+
+def on_overlap_tile2(sprite2, location):
+    game.game_over(False)
+scene.on_overlap_tile(SpriteKind.player,
+    sprites.dungeon.hazard_lava1,
+    on_overlap_tile2)
 
 NAMOR: Sprite = None
 shuri: Sprite = None

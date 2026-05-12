@@ -1,7 +1,11 @@
+scene.onOverlapTile(SpriteKind.Player, assets.tile`
+        baseTransparency16
+        `, function on_overlap_tile(sprite3: Sprite, location2: tiles.Location) {
+    game.gameOver(true)
+})
 info.onScore(300, function on_on_score() {
     NAMOR.setPosition(70, 47)
     NAMOR.sayText("OWIE! YOU KILLED ME! OK, OK, I GIVE UP! YOU ALL WIN!", 5000, true)
-    NAMOR.destroy(effects.coolRadial, 1000)
     scene.setBackgroundImage(assets.image`
         boston-bridge
         `)
@@ -10,12 +14,6 @@ info.onScore(300, function on_on_score() {
 sprites.onOverlap(SpriteKind.Guard, SpriteKind.Enemy, function on_on_overlap(sprite: Sprite, otherSprite: Sprite) {
     info.changeScoreBy(25)
     NAMOR.setPosition(148, 2)
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function on_overlap_tile(sprite2: Sprite, location: tiles.Location) {
-    game.gameOver(false)
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.jewels.jewel5, function on_overlap_tile2(sprite3: Sprite, location2: tiles.Location) {
-    game.gameOver(true)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function on_on_overlap2(sprite4: Sprite, otherSprite2: Sprite) {
     scene.cameraShake(20, 5000)
@@ -27,6 +25,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function on_on_overlap2(s
         info.changeLifeBy(5)
         pause(100)
     }
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function on_overlap_tile2(sprite2: Sprite, location: tiles.Location) {
+    game.gameOver(false)
 })
 let NAMOR : Sprite = null
 let shuri : Sprite = null
